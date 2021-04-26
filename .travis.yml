@@ -12,14 +12,14 @@ script:
   - docker run -e CI=true multi-docker/client npm run test
 
 after_success:
-  - docker build -t multi-docker/client ./client
-  - docker build -t multi-docker/nginx ./nginx
-  - docker build -t multi-docker/server ./server
-  - docker build -t multi-docker/worker ./worker
+  - docker build -t bopagec/multi-client ./client
+  - docker build -t bopagec/multi-nginx ./nginx
+  - docker build -t bopagec/multi-server ./server
+  - docker build -t bopagec/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker-hub
-  - docker push multi-docker/client
-  - docker push multi-docker/nginx
-  - docker push multi-docker/server
-  - docker push multi-docker/worker
+  - docker push bopagec/multi-client
+  - docker push bopagec/multi-nginx
+  - docker push bopagec/multi-server
+  - docker push bopagec/multi-worker
